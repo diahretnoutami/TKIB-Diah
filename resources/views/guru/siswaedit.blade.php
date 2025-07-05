@@ -18,7 +18,7 @@
                     @endif
 
 
-                    <form action="{{ route('siswa.update', $data->noinduk) }}" method="POST">
+                    <form action="{{ route('guru.siswa.update', $data->noinduk) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="form-group mb-2">

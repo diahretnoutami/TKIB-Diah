@@ -21,7 +21,7 @@ class GuruSiswaController extends Controller
                 ->where('id_ta', $taAktif->id_ta);
         })->where('status', 'A')->get();
 
-        return view('guru.siswa', compact('data'));
+        return view('guru.siswa.index', compact('data'));
     }
 
     public function edit($noinduk)
@@ -33,13 +33,13 @@ class GuruSiswaController extends Controller
         $taAktif = \App\Models\TahunAjaran::where('is_active', true)->first();
 
         if (!$taAktif) {
-            return redirect()->route('guru.siswa')->with('error', 'Tahun Ajaran aktif belum ditentukan.');
+            return redirect()->route('guru.siswa.index')->with('error', 'Tahun Ajaran aktif belum ditentukan.');
         }
 
         $isAuthorized = $data->kelas->where('id_guru', $guru->id_guru)->where('id_ta', $taAktif->id_ta)->isNotEmpty();
 
         if (!$isAuthorized) {
-            return redirect()->route('guru.siswa')->with('error', 'Anda tidak memiliki akses untuk mengedit siswa ini.');
+            return redirect()->route('guru.siswa.index')->with('error', 'Anda tidak memiliki akses untuk mengedit siswa ini.');
         }
 
         return view('guru.siswaedit', compact('data'));
@@ -65,13 +65,13 @@ class GuruSiswaController extends Controller
         $taAktif = \App\Models\TahunAjaran::where('is_active', true)->first();
 
         if (!$taAktif) {
-            return redirect()->route('guru.siswa')->with('error', 'Tahun Ajaran aktif belum ditentukan.');
+            return redirect()->route('guru.siswa.index')->with('error', 'Tahun Ajaran aktif belum ditentukan.');
         }
 
         $isAuthorized = $siswa->kelas->where('id_guru', $guru->id_guru)->where('id_ta', $taAktif->id_ta)->isNotEmpty();
 
         if (!$isAuthorized) {
-            return redirect()->route('guru.siswa')->with('error', 'Anda tidak memiliki akses untuk mengupdate siswa ini.');
+            return redirect()->route('guru.siswa.index')->with('error', 'Anda tidak memiliki akses untuk mengupdate siswa ini.');
         }
 
         // Update hanya kolom yang diizinkan untuk guru
@@ -80,6 +80,6 @@ class GuruSiswaController extends Controller
         $siswa->lingkarkpl = $request->input('lingkarkpl');
         $siswa->save();
 
-        return redirect()->route('guru.siswa')->with('success', 'Data siswa berhasil diperbarui!');
+        return redirect()->route('guru.siswa.index')->with('success', 'Data siswa berhasil diperbarui!');
     }
 }

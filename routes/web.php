@@ -112,9 +112,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 Route::middleware(['auth', 'role:guru'])->group(function () {
     Route::get('/d', [GuruDashboardController::class, 'index'])->name('guru.dashboard');
     
-    Route::get('/gsiswa', [GuruSiswaController::class, 'index'])->name('guru.siswa');
+    Route::get('/gsiswa', [GuruSiswaController::class, 'index'])->name('guru.siswa.index');
     Route::get('/gsiswa/edit/{noinduk}', [GuruSiswaController::class, 'edit'])->name('guru.siswaedit');
-    Route::put('/gsiswa/{noinduk}', [GuruSiswaController::class, 'update'])->name('siswa.update'); 
+    Route::put('/gsiswa/{noinduk}', [GuruSiswaController::class, 'update'])->name('guru.siswa.update'); 
     
     Route::get('/absen', [AbsenController::class, 'index'])->name('guru.absen');
     Route::get('/inputabsen', [AbsenController::class, 'create'])->name('guru.inputabsen');
