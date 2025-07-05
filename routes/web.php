@@ -75,7 +75,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     });
 
     Route::prefix('admin/hph')->group(function () {
-        Route::get('/', [AdminPhController::class, 'index'])->name('index'); // Pilih Tahun Ajaran
+        Route::get('/', [AdminPhController::class, 'index'])->name('adminhphindex'); // Pilih Tahun Ajaran
         Route::get('/{id_ta}/kelas', [AdminPhController::class, 'kelas'])->name('kelas'); // Pilih kelas
         Route::get('/kelas/{id_k}/siswa', [AdminPhController::class, 'siswa'])->name('siswa'); // Pilih siswa
         Route::get('/siswa/{id_kelas_siswa}/tanggal', [AdminPhController::class, 'tanggal'])->name('tanggal'); // Pilih tanggal
@@ -84,7 +84,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     });
 
     Route::prefix('admin/hpm')->group(function () {
-        Route::get('/', [AdminPmController::class, 'index'])->name('index'); // Pilih Tahun Ajaran
+        Route::get('/', [AdminPmController::class, 'index'])->name('adminhpmindex'); // Pilih Tahun Ajaran
         Route::get('/{id_ta}/kelas', [AdminPmController::class, 'kelas'])->name('hpmkelas'); // Pilih kelas
         Route::get('/kelas/{id_k}/siswa', [AdminPmController::class, 'siswa'])->name('hpmsiswa'); // Pilih siswa
         Route::get('/siswa/{id_kelas_siswa}/minggu', [AdminPmController::class, 'minggu'])->name('hpmminggu'); // Pilih minggu
@@ -92,7 +92,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     });
 
     Route::prefix('admin/hpb')->group(function () {
-        Route::get('/', [AdminPbController::class, 'index'])->name('index'); // Pilih Tahun Ajaran
+        Route::get('/', [AdminPbController::class, 'index'])->name('adminhpbindex'); // Pilih Tahun Ajaran
         Route::get('/{id_ta}/kelas', [AdminPbController::class, 'kelas'])->name('hpbkelas'); // Pilih kelas
         Route::get('/kelas/{id_k}/siswa', [AdminPbController::class, 'siswa'])->name('hpbsiswa'); // Pilih siswa
         Route::get('/siswa/{id_kelas_siswa}/bulan', [AdminPbController::class, 'bulan'])->name('hpbbulan'); // Pilih bulan
@@ -100,7 +100,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     });
 
     Route::prefix('admin/lap')->group(function () {
-        Route::get('/', [AdminLaporanController::class, 'index'])->name('index'); // Pilih Tahun Ajaran
+        Route::get('/', [AdminLaporanController::class, 'index'])->name('adminlapindex'); // Pilih Tahun Ajaran
         Route::get('/{id_ta}/kelas', [AdminLaporanController::class, 'kelas'])->name('lapkelas'); // Pilih kelas
         Route::get('/kelas/{id_k}/siswa', [AdminLaporanController::class, 'siswa'])->name('lapsiswa'); // Pilih siswa
         Route::get('/siswa/{id_kelas_siswa}/detail', [AdminLaporanController::class, 'detail'])->name('lapdetail'); // Lihat detail
